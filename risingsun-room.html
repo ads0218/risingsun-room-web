@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>해뜨는방</title>
+	<link rel="stylesheet" href="risingsun-room.css">
+</head>
+<body>
+	<div id=BODY>
+		<header id='header'>
+		<img src="http://vignette3.wikia.nocookie.net/clubpenguin/images/6/65/Gary%27s_Room_Sun_Pin.png/revision/latest/scale-to-width-down/185?cb=20150314040809&format=webp" width=50px height=50px id='rogo'>
+			<nav class='tab selectedTab' id='home'>주거</nav>
+			<nav class='tab' id='store'>상가</nav>
+			<nav class='tab' is='ground'>토지</nav>
+			<div id="serch">
+				<input type="text" placeholder="원하시는 정보를 입력하세요" id='serchBox'
+					   onkeydown = "if (event.keyCode == 13)
+                        document.querySelector('#serchButton').click()">
+				<button id='serchButton'>검색</button>
+			</div>
+		</header>
+
+		<div id='wrap' class='wrap'>
+			<div class='map' id="homeMap">
+			</div>
+
+			<div class='aside' id="homeAside">
+				<div class='filter' id="homeFilter">
+					<div class="filterTab selectedFilterTab" id="tradingTab">매매</div>
+					<div class="filterTab" id="charterTab">임/전세</div>
+					<div class="filterWindow selectedFilterWindow" id="tradingWindow">
+						<span class="tradingPrise">
+							<p>매매가</p>
+							<input type="text" class="minPrise filterInput">만원 ~
+							<input type="text" class="maxPrise filterInput">만원
+						</span>
+						<div class="tradingArea">
+							<p>면적</p>
+							<input type="text" class="minArea filterInput">m² ~
+							<input type="text" class="maxArea filterInput">m²
+						</div>
+						<input type="checkbox" class="check">check <br>
+						<button class="filterSubmit">적용</button>
+						<select name="is_direct" class="is_direct_select">
+							<option value="direct">직거래</option>
+							<option value="none_direct">중계</option>
+						</select>
+					</div>
+					<div class="filterWindow" id="charterWindow">
+						<span class="deposit">
+							<p>보증금</p>
+							<input type="text" class="minPrise filterInput">만원 ~
+							<input type="text" class="maxPrise filterInput">만원
+						</span>
+						<span class="rent">
+							<p>월세</p>
+							<input type="text" class="minPrise filterInput">만원 ~
+							<input type="text" class="maxPrise filterInput">만원
+						</span>
+						면적 <br>
+						<input type="text" class="minArea filterInput">m² ~
+						<input type="text" class="maxArea filterInput">m²
+						<select name="is_direct" class="is_direct_select">
+							<option value="direct">직거래</option>
+							<option value="none_direct">중계</option>
+						</select> <br>
+						<input type="checkbox" class="check">check <br>
+						<button class="filterSubmit">적용</button>
+					</div>
+				</div>
+
+				<div class='list'>
+					<a href="{{url}}"><div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'><span class='depositPriseList'>60000</span><span>/</span><span class='rentPriseList'>500</span></li><span class='is_direct'>직</span><li class='sellListArea'>50000m</li><li class='sellListLocation'>인지면 남정리 남전둔전길 150-3</li></ul></div></a>
+					<a href="{{url}}"><div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'><span class='tradingPriseList'>{{price}}</span></li><span class='is_direct'>{{direct}}</span><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div></a>
+					<a href="http://www.naver.com"><div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'>6000/50<span class='is_direct'>직</span></li><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div></a>
+					<div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'>6000/50<span class='is_direct'>직</span></li><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div>
+					<div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'>6000/50<span class='is_direct'>직</span></li><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div>
+					<div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'>6000/50<span class='is_direct'>직</span></li><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div>
+					<div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'>6000/50<span class='is_direct'>직</span></li><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="list" id='sellListTradingTemp'>
+		<a href="{{url}}"><div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'><span class='tradingPriseList'>{{price}}</span></li><span class='is_direct'>{{direct}}</span><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div></a>
+	</script>
+	<script type="list" id='sellListCharterTemp'>
+		<a href="{{url}}"><div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'><span class='depositPriseList'>{{depositPrice}}</span>/<span class='rentPriseList'>{{rentPrise}}</span></li><span class='is_direct'>{{direct}}</span><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div></a>
+	</script>
+	<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=0c00e0606bc91ad23aa8f793801c005b"></script>
+<script  src='risingsun-room.js'></script>
+</body>
+</html>

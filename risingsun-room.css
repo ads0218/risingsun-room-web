@@ -1,0 +1,182 @@
+#BODY{
+	box-sizing:border-box;
+	width:100%;
+	height:100%;
+}
+html{
+	box-sizing:border-box;
+	width:99%;
+	height:100%;
+	padding:0;
+}
+body{
+	width:100%;
+	height:100%;
+	margin:0;
+}
+#header{
+	width:100%;
+	height:10%;
+	overflow:left;
+	padding:10px;
+}
+#rogo{
+	float:left;
+	margin-top:10px;
+}
+.tab {
+	float:left;
+	height:100%;
+	box-sizing: border-box;
+	width:180px;
+	text-align: center;
+	font-size:2.3rem;
+	font-family: sans-serif;
+	padding:15px;
+	cursor:pointer;
+}
+.selectedTab{
+	border-bottom:5px solid #8ec84b;
+	color:#8ec84b;
+}
+#serch{
+	margin-top:10px;
+	float:left;
+	background-color: #8ec84b;
+	width:500px;
+	padding:5px;
+}
+#serchBox{
+	width:450px;
+	height:40px;
+	font-size:2.5em;
+}
+#serchButton{
+	width:40px;
+	height:45px;
+	font-size:1em;
+	float:right;
+}
+.wrap{
+	background-color: yellow;
+	width:100%;
+	height:87%;
+	overflow:left;
+}
+.map{
+	background-color: green;
+	width:70%;
+	height:100%;
+	float:left;
+}
+.aside{
+	background-color: blue;
+	width:400px;
+	height:100%;
+	float:left;
+}
+.filter{
+	width:100%;
+	height:30%;
+	background-color:orange;
+	box-sizing:border-box;
+	border:1px solid #777;
+}
+.list{
+	width:100%;
+	height:70%;
+	background-color: red;
+	overflow:scroll;
+}
+.sellListUl{
+	list-style-type: none;
+	font-size:1.95rem;
+	margin:0;
+}
+.sellListDiv{
+	background-color:#fff;
+	color:#666;
+	width:100%;
+	height:150px;
+	margin:0;
+	border:1px solid #777;
+	box-sizing: border-box;
+}
+.sellListPrice{
+	font-weight: bold;
+	color:#8ec84b;
+}
+.is_direct{
+	color:red;
+}
+.sellListArea{
+	font-size:;
+}
+.filterTab{
+	width:50%;
+	height:20%;
+	font-size:1.5rem;
+	background-color:#f6f6f6;
+	color:#777;
+	font-weight:bold;
+	text-align: center;
+	float:left;
+	box-sizing:border-box;
+	padding:6px;
+	cursor:pointer;
+}
+.selectedFilterTab{
+	background-color:#8ec84b;
+	color:#fff;
+}
+.filterWindow{
+	width:100%;
+	height:80%;
+	float:left;
+	padding:10px;
+	box-sizing:border-box;
+	font-size:16px;
+	background:#fff;
+	display:none;
+	position:relative;
+}
+.selectedFilterWindow{
+	display:inline;
+}
+.filterInput{
+	width:50px;
+	height:17px;
+	font-size:16px;
+}
+.is_direct_select{
+	height:25px;
+	font-size:20px;
+	position:absolute;
+	bottom:10px;
+	left:210px;
+}
+.filterSubmit{
+	margin:auto;
+	width:40px;
+	height:25px;
+	font-size:18px;
+	padding:0px;
+	background-color:#fff;
+	border:1px solid #777;
+	border-radius:8px;
+	position:absolute;
+	bottom:10px;
+	left:160px;
+}
+button{
+	cursor:pointer;
+}
+p{
+	margin:0px;
+}
+span{
+	float:left;
+}
+.is_direct{
+	float:none;
+}
