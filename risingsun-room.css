@@ -5,12 +5,10 @@
 }
 html{
 	box-sizing:border-box;
-	width:99%;
 	height:100%;
 	padding:0;
 }
 body{
-	width:100%;
 	height:100%;
 	margin:0;
 }
@@ -58,14 +56,14 @@ body{
 	float:right;
 }
 .wrap{
-	background-color: yellow;
+	1background-color: yellow;
 	width:100%;
 	height:87%;
 	overflow:left;
 }
 .map{
 	background-color: green;
-	width:70%;
+	width:72%;
 	height:100%;
 	float:left;
 }
@@ -85,12 +83,12 @@ body{
 .list{
 	width:100%;
 	height:70%;
-	background-color: red;
+	background-color: #dfdfdf;
 	overflow:scroll;
 }
 .sellListUl{
 	list-style-type: none;
-	font-size:1.95rem;
+	font-size:1.9rem;
 	margin:0;
 }
 .sellListDiv{
@@ -148,7 +146,7 @@ body{
 	height:17px;
 	font-size:16px;
 }
-.is_direct_select{
+.is_direct_select_trading,.is_direct_select_charter{
 	height:25px;
 	font-size:20px;
 	position:absolute;
@@ -179,4 +177,10 @@ span{
 }
 .is_direct{
 	float:none;
+}
+.selectedSellList{
+	background-color:#8ec84b;
+}
+.selectedSellList>.sellListUl>.sellListPrice{
+	color:#fff;
 }
