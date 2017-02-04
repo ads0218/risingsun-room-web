@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded',function(){
 	init();
+	resizeMap();
 });
 //지도 API ----------------------------------------------------------
 var container = document.getElementById('homeMap'); //지도를 담을 영역의 DOM 레퍼런스
@@ -50,6 +51,8 @@ function init(){
 	var header=document.querySelector('#header');
 	var filter=document.querySelector('.filter');
 	var list=document.querySelector('.list');
+	var body=document.querySelector('#BODY');
+
 	header.addEventListener('mouseover',function(evt){
 		var target=evt.target;
 		changeColor(target,'#8ec84b');
@@ -68,16 +71,28 @@ function init(){
 		var target = evt.target;
 		selectTab(target);
 		clickFilterSubmit(target);
-	})
+	});
 	list.addEventListener('mouseover',function(evt){
 		var target=evt.target;
 		highlightMarker(target.id,'add');
-	})
+	});
 	list.addEventListener('mouseout',function(evt){
 		var target=evt.target;
 		highlightMarker(target.id,'cancel');
-	})
-
+	});
+	window.addEventListener('resize',function(evt){
+		var target=evt.target;
+		resizeMap();
+	});
+}
+function resizeMap(){
+	var container=document.querySelector('#BODY');
+	var map=document.querySelector('.map');
+	var containerWidth=window.getComputedStyle(container,null).width;
+	containerWidth=Number(containerWidth.replace(/(.+)px/,'$1'));
+	var mapWidth=containerWidth-400;
+	mapWidth+='px';
+	map.style.width=mapWidth;
 }
 function highlightMarker(id_num,ver){
 	var aim;

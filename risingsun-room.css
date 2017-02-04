@@ -1,6 +1,6 @@
 #BODY{
 	box-sizing:border-box;
-	width:100%;
+	width:98%;
 	height:100%;
 }
 html{
@@ -62,8 +62,8 @@ body{
 	overflow:left;
 }
 .map{
+	box-sizing:border-box;
 	background-color: green;
-	width:72%;
 	height:100%;
 	float:left;
 }
