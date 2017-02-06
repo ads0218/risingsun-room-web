@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded',function(){
 	init();
-	resizeMap();
 });
 //지도 API ----------------------------------------------------------
 var container = document.getElementById('homeMap'); //지도를 담을 영역의 DOM 레퍼런스
@@ -85,11 +84,38 @@ function init(){
 		resizeMap();
 	});
 }
+// target의 위치를 추적하는 함수
+function tracking(data) {
+	var pos = new daum.maps.LatLng(data.latitude, data.longitude);
+
+	//var proj = map.getProjection();
+
+	// 지도의 영역을 구합니다.
+	var bounds = map.getBounds();
+
+	// 지도의 영역을 기준으로 확장된 영역을 구합니다.
+	//var extBounds = extendBounds(bounds, proj);
+
+	// target이 확장된 영역에 속하는지 판단하고
+	if (!bounds.contain(pos)) {
+		moveMap(data);
+	}
+}
+
+function moveMap(data) {
+	// 이동할 위도 경도 위치를 생성합니다
+	var moveLatLon = new daum.maps.LatLng(data.latitude,data.longitude);
+	// 지도 중심을 부드럽게 이동시킵니다
+	// 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+	map.panTo(moveLatLon);
+}
+
 function resizeMap(){
 	var container=document.querySelector('#BODY');
 	var map=document.querySelector('.map');
 	var containerWidth=window.getComputedStyle(container,null).width;
 	containerWidth=Number(containerWidth.replace(/(.+)px/,'$1'));
+	console.log(containerWidth);
 	var mapWidth=containerWidth-400;
 	mapWidth+='px';
 	map.style.width=mapWidth;
@@ -107,6 +133,8 @@ function highlightMarker(id_num,ver){
 		I=i;
 		aim.setMap(null);
 	}
+	tracking(aimData);
+
 	if(ver=='add') {
 		var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
 			imageSize = new daum.maps.Size(64, 69),
