@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19e376cb-11e3-4743-a9ad-1e442d15d16e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/risingsun-room.css" afterPath="$PROJECT_DIR$/risingsun-room.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/risingsun-room.html" afterPath="$PROJECT_DIR$/risingsun-room.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/risingsun-room.js" afterPath="$PROJECT_DIR$/risingsun-room.js" />
     </list>
     <ignored path="risingsun-room-web.iws" />
@@ -23,14 +25,14 @@
     <favorites_list name="risingsun-room-web" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4983108">
+    <splitter split-orientation="horizontal" split-proportion="0.38344595">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="risingsun-room.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/risingsun-room.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.8601864">
-                  <caret line="90" column="7" selection-start-line="90" selection-start-column="7" selection-end-line="90" selection-end-column="7" />
+                <state vertical-scroll-proportion="0.24101198">
+                  <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
                   <folding />
                 </state>
               </provider>
@@ -43,8 +45,8 @@
           <file leaf-file-name="risingsun-room.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/risingsun-room.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-4.4117646">
-                  <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+                <state vertical-scroll-proportion="-6.423077">
+                  <caret line="190" column="10" selection-start-line="190" selection-start-column="10" selection-end-line="190" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
@@ -53,8 +55,8 @@
           <file leaf-file-name="risingsun-room.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/risingsun-room.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.59090906">
-                  <caret line="346" column="10" selection-start-line="346" selection-start-column="10" selection-end-line="346" selection-end-column="10" />
+                <state vertical-scroll-proportion="0.36129034">
+                  <caret line="372" column="19" selection-start-line="372" selection-start-column="19" selection-end-line="382" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
@@ -70,8 +72,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/risingsun-room.html" />
         <option value="$PROJECT_DIR$/risingsun-room.css" />
+        <option value="$PROJECT_DIR$/risingsun-room.html" />
         <option value="$PROJECT_DIR$/risingsun-room.js" />
       </list>
     </option>
@@ -111,6 +113,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -119,19 +122,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="risingsun-room-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="risingsun-room-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -246,24 +238,88 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/risingsun-room.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8601864">
-          <caret line="90" column="7" selection-start-line="90" selection-start-column="7" selection-end-line="90" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/risingsun-room.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.4117646">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="186" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="186" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/risingsun-room.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59090906">
-          <caret line="346" column="10" selection-start-line="346" selection-start-column="10" selection-end-line="346" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/risingsun-room-web.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/risingsun-room.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.423077">
+          <caret line="190" column="10" selection-start-line="190" selection-start-column="10" selection-end-line="190" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/risingsun-room.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24101198">
+          <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/risingsun-room.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36129034">
+          <caret line="372" column="19" selection-start-line="372" selection-start-column="19" selection-end-line="382" selection-end-column="9" />
           <folding />
         </state>
       </provider>

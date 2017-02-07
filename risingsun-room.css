@@ -16,7 +16,7 @@ body{
 	width:98%;
 	height:10%;
 	overflow:left;
-	padding:10px;
+	padding:0px 10px;
 }
 #rogo{
 	float:left;
@@ -34,7 +34,7 @@ body{
 	cursor:pointer;
 }
 .selectedTab{
-	border-bottom:5px solid #8ec84b;
+	border-bottom:6px solid #8ec84b;
 	color:#8ec84b;
 }
 #serch{
@@ -56,20 +56,20 @@ body{
 	float:right;
 }
 .wrap{
-	1background-color: yellow;
+	1background-color: #eeeeee;
 	width:100%;
 	height:87%;
 	overflow:left;
 }
 .map{
 	box-sizing:border-box;
-	background-color: green;
+	background-color: #eeeeee;
 	width:72%;
 	height:100%;
 	float:left;
 }
 .aside{
-	background-color: blue;
+	background-color: #eee;
 	width:400px;
 	height:100%;
 	float:left;
@@ -84,7 +84,7 @@ body{
 .list{
 	width:100%;
 	height:70%;
-	background-color: #dfdfdf;
+	background-color: #fff;
 	overflow:scroll;
 }
 .sellListUl{
@@ -94,10 +94,10 @@ body{
 }
 .sellListDiv{
 	background-color:#fff;
-	color:#666;
+	color:#555;
 	width:100%;
 	height:150px;
-	margin:0;
+	margin:1px 0px;
 	border:1px solid #777;
 	box-sizing: border-box;
 }
@@ -184,4 +184,9 @@ span{
 }
 .selectedSellList>.sellListUl>.sellListPrice{
 	color:#fff;
+}
+.room_type{
+	float:right;
+	margin-right:10px;
+	color:
 }

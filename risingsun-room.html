@@ -39,6 +39,7 @@
 							<input type="text" class="maxTradingArea filterInput">m²
 						</div>
 						<input type="checkbox" class="tradingCheck" value="check">check <br>
+						<input type="checkbox" class="tradingCheck" value="all">ALL <br>
 						<button class="filterSubmit">적용</button>
 						<select name="is_direct" class="is_direct_select_trading">
 							<option value="direct">직거래</option>
@@ -69,24 +70,14 @@
 				</div>
 
 				<div class='list'>
-					<a href="{{url}}"><div class='sellListDiv selectedSellList'><ul class='sellListUl'><li class='sellListPrice'><span class='depositPriceList'>60000</span><span>/</span><span class='rentPriceList'>500</span></li><span class='is_direct'>직</span><li class='sellListArea'>50000m</li><li class='sellListLocation'>인지면 남정리 남전둔전길 150-3</li></ul></div></a>
-					<a href="{{url}}"><div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'><span class='tradingPriceList'>{{price}}</span></li><span class='is_direct'>{{direct}}</span><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div></a>
-					<a href="http://www.naver.com"><div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'>6000/50<span class='is_direct'>직</span></li><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div></a>
-					<div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'>6000/50<span class='is_direct'>직</span></li><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div>
-					<div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'>6000/50<span class='is_direct'>직</span></li><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div>
-					<div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'>6000/50<span class='is_direct'>직</span></li><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div>
-					<div class='sellListDiv'><ul class='sellListUl'><li class='sellListPrice'>6000/50<span class='is_direct'>직</span></li><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script type="list" id='sellListTradingTemp'>
-		<a href="{{url}}"><div class='sellListDiv' id='T_{{id_num}}'><ul class='sellListUl'><li class='sellListPrice'><span class='tradingPriceList'>{{price}}</span></li><span class='is_direct'>{{direct}}</span><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div></a>
-	</script>
-	<script type="list" id='sellListCharterTemp'>
-		<a href="{{url}}"><div class='sellListDiv' id='C_{{id_num}}'><ul class='sellListUl'><li class='sellListPrice'><span class='depositPriceList'>{{depositPrice}}</span>/<span class='rentPriceList'>{{rentPrice}}</span></li><span class='is_direct'>{{direct}}</span><li class='sellListArea'>{{area}}</li><li class='sellListLocation'>{{location}}</li></ul></div></a>
-	</script>
+	<script type="list" id='sellListTradingTemp'><a href="{{url}}"><div class='sellListDiv' id='{{id_num}}'><ul class='sellListUl'><li class='sellListPrice'><span class='tradingPriceList'>{{price}}</span></li><span class='is_direct'>{{direct}}</span><li class='sellListArea'>{{area}}<span class='room_type'>{{room_type}}</span></li><li class='sellListLocation'>{{location}}</li></ul></div></a></script>
+	<script type="list" id='sellListCharterTemp'><a href="{{url}}"><div class='sellListDiv' id='{{id_num}}'><ul class='sellListUl'><li class='sellListPrice'><span class='depositPriceList'>{{depositPrice}}</span><span>/</span><span class='rentPriceList'>{{rentPrice}}</span></li><span class='is_direct'>{{direct}}</span><li class='sellListArea'>{{area}}<span class='room_type'>{{room_type}}</span></li><li class='sellListLocation'>{{location}}</li></ul></div></a></script>
 	<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=0c00e0606bc91ad23aa8f793801c005b"></script>
 <script  src='risingsun-room.js'></script>
+
 </body>
 </html>

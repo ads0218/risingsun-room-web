@@ -20,25 +20,25 @@ map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
 var zoomControl = new daum.maps.ZoomControl();
 map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 
-// 마커가 표시될 위치입니다
-var markerPosition  = new daum.maps.LatLng(36.78487940520252, 126.45032439280797);
-
-// 마커를 생성합니다
-var marker = new daum.maps.Marker({
-	position: markerPosition,
-	id_num:1
-	});
-
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
+//// 마커가 표시될 위치입니다
+//var markerPosition  = new daum.maps.LatLng(36.78487940520252, 126.45032439280797);
+//
+//// 마커를 생성합니다
+//var marker = new daum.maps.Marker({
+//	position: markerPosition,
+//	id_num:1
+//	});
+//
+//// 마커가 지도 위에 표시되도록 설정합니다
+//marker.setMap(map);
 
 // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 // marker.setMap(null);
 
-// 마커에 클릭이벤트를 등록합니다
-daum.maps.event.addListener(marker, 'click', function() {
-	//evtfn
-});
+//// 마커에 클릭이벤트를 등록합니다
+//daum.maps.event.addListener(marker, 'click', function() {
+//	//evtfn
+//});
 
 //------------------------------------------------------------------
 
@@ -71,18 +71,27 @@ function init(){
 		selectTab(target);
 		clickFilterSubmit(target);
 	});
-	list.addEventListener('mouseover',function(evt){
-		var target=evt.target;
-		highlightMarker(target.id,'add');
-	});
-	list.addEventListener('mouseout',function(evt){
-		var target=evt.target;
-		highlightMarker(target.id,'cancel');
-	});
+	//list.addEventListener('mouseleave',function(evt){
+	//	var target=evt.target;
+	//	//if(target.tagName!='DIV') {
+	//	//	target = target.parentNode;
+	//	//	if (target.tagName != 'DIV') {
+	//	//		target = target.parentNode.parentNode;
+	//	//		if (target.tagName != 'DIV') return;
+	//	//	}
+	//	//}
+	//	if(target.className!='sellListDive') return;
+	//	highlightMarker(target.id,'add');
+	//});
+	//list.addEventListener('mouseleave',function(evt){
+	//	var target=evt.target;
+	//	highlightMarker(target.id,'cancel');
+	//});
 	window.addEventListener('resize',function(evt){
 		var target=evt.target;
 		resizeMap();
 	});
+	resizeMap();
 }
 // target의 위치를 추적하는 함수
 function tracking(data) {
@@ -111,31 +120,37 @@ function moveMap(data) {
 }
 
 function resizeMap(){
-	var container=document.querySelector('#BODY');
+	var containerBODY=document.querySelector('#BODY');
 	var map=document.querySelector('.map');
-	var containerWidth=window.getComputedStyle(container,null).width;
+	var containerWidth=window.getComputedStyle(containerBODY,null).width;
 	containerWidth=Number(containerWidth.replace(/(.+)px/,'$1'));
-	console.log(containerWidth);
 	var mapWidth=containerWidth-400;
 	mapWidth+='px';
 	map.style.width=mapWidth;
 }
-function highlightMarker(id_num,ver){
+function highlightMarker(id_num,ver) {
 	var aim;
 	var I;
 	var aimData;
 	var marker;
-	for(var i=0;i<currentSellList.length;i++){
-		if(currentSellList[i].id_num==id_num) aimData=currentSellList[i];
+	for (var i = 0; i < currentSellList.length; i++) {
+		if (currentSellList[i].id_num == id_num) {
+			aimData = currentSellList[i];
+			break;
+		}
 	}
-	for(var i=0;i<currentMarkers.length;i++){
-		if(currentMarkers[i].id_num==id_num) aim=currentMarkers[i];
-		I=i;
-		aim.setMap(null);
+	for (var i = 0; i < currentMarkers.length; i++) {
+		if (currentMarkers[i].id_num == id_num) {
+			aim = currentMarkers[i];
+			I = i;
+			aim.setMap(null);
+			break;
+		}
+
 	}
 	tracking(aimData);
 
-	if(ver=='add') {
+	if (ver == 'add') {
 		var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
 			imageSize = new daum.maps.Size(64, 69),
 			imageOption = {offset: new daum.maps.Point(27, 69)};
@@ -146,18 +161,19 @@ function highlightMarker(id_num,ver){
 			image: markerImage
 		});
 	}
-	else if(ver=='cancel'){
-		var markerPosition = new daum.maps.LatLng(data.latitude,data.longitude);
+	else if (ver == 'cancel') {
+		var markerPosition = new daum.maps.LatLng(aimData.latitude, aimData.longitude);
 		marker = new daum.maps.Marker({
 			position: markerPosition
 		});
 	}
-	marker.id_num=id_num;
+	marker.id_num = id_num;
 	marker.setMap(map);
-	currentMarkers[I]=marker;
+	daum.maps.event.addListener(marker, 'click', function () {
+		clickMarker(id_num);
+	});
+	currentMarkers[I] = marker;
 }
-
-
 function changeColor(target,color){
 	if(target.tagName=='NAV') {
 		if (target.classList[1] == 'selectedTab') return;
@@ -174,6 +190,8 @@ function selectTab(target){
 		for(var i=0;i<3;i++){
 			changeColor(tabs[i],'#000');
 		}
+		cleanList();
+		cleanMarkers(currentMarkers);
 	}
 	if(target.classList[0]=='filterTab'){
 		if(target.classList[1]=='selectedFilterTab')return;
@@ -206,7 +224,7 @@ function clickSerchButton(target){
 	var filterCondition='';
 	filterCondition=filtering();
 	url+=filterCondition;
-	callAjax(url,preWriteSellList);
+	callAjax(url,parseAjax);
 }
 function clickFilterSubmit(target){
 	if(target.className!=='filterSubmit') return;
@@ -226,10 +244,11 @@ function clickFilterSubmit(target){
 		var is_direct_trading = document.querySelector('.is_direct_select_trading').value;
 		for(var i=0;i<currentSellList.length;i++){
 			var subject_trading=currentSellList[i];
+			if(subject_trading.deal_type!='trading') continue;
 			if(subject_trading.price<minTradingPrice||subject_trading.price>maxTradingPrice) continue;
 			if(subject_trading.area<minTradingArea||subject_trading.area>maxTradingArea) continue;
 			if(subject_trading.is_direct==is_direct_trading) continue;
-			var index =checkBoxes.indexOf(subject_trading.room_type)
+			var index =checklist.indexOf(subject_trading.room_type)
 			if(index==-1) continue;
 			changingSellList.push(subject_trading);
 		}
@@ -251,11 +270,12 @@ function clickFilterSubmit(target){
 		var is_direct_charter = document.querySelector('.is_direct_select_charter').value;
 		for(var i=0;i<currentSellList.length;i++){
 			var subject_charter=currentSellList[i];
+			if(subject_charter.deal_type!='charter') continue;
 			if(subject_charter.deposit_price<minDepositPrice||subject_charter.deposit_price>maxDepositPrice) continue;
 			if(subject_charter.rent_price<minRentPrice||subject_charter.rent_price>maxRentPrice) continue;
 			if(subject_charter.area<minCharterArea||subject_charter.area>maxCharterArea) continue;
 			if(subject_charter.is_direct==is_direct_charter) continue;
-			var index =checkBoxes.indexOf(subject_charter.room_type)
+			var index =checklist.indexOf(subject_charter.room_type)
 			if(index==-1) continue;
 			changingSellList.push(subject_charter);
 		}
@@ -268,49 +288,75 @@ function clickFilterSubmit(target){
 function filtering(){
 
 }
-function preWriteSellList(preData){
+function parseAjax(JSON){
+	var data=JSON.parse(this.responseText);
+	data=data.results
+	preWriteSellList(data);
+}
+function preWriteSellList(data){
+	//createMarker(data);
 	cleanMarkers(currentMarkers);
-
-
-	writeSellList();
+	cleanList();
+	for(var i=0;i<data.length;i++) {
+		writeSellList(data[i],i);
+	}
+	var evtTargetList=document.querySelectorAll('.sellListDiv');
+	for(var i=0;i<evtTargetList.length;i++){
+		evtTargetList[i].addEventListener('mouseenter',function(evt){
+			var target=evt.target;
+			if(target.className!='sellListDiv') return;
+			highlightMarker(target.id,'add');
+		});
+		evtTargetList[i].addEventListener('mouseleave',function(evt){
+			var target=evt.target;
+			highlightMarker(target.id,'cancel');
+		});
+	}
 }
 //------------------------------------
 
 function writeSellList(data,id_num) {
 	//매매일때
-	if (data.임전 == 매매) {
+	if (data.deal_type == 'trading') {
 		var temp = document.querySelector('#sellListTradingTemp');
 		temp = temp.innerHTML;
-		temp.replace('{{url}}', data.url);
-		temp.replace('{{id_num}}','T_'+id_num);
-		temp.replace('{{price}}', data.price);
-		temp.replace('{{{{direct}}', data.is_direct);
-		temp.replace('{{area}}', data.area);
-		temp.replace('{{location}}', data.location);
+		id_num='T_'+id_num;
+		temp=temp.replace('{{url}}', data.url);
+		temp=temp.replace('{{id_num}}',id_num);
+		temp=temp.replace('{{price}}', data.price);
+		temp=temp.replace('{{direct}}', data.is_direct);
+		temp=temp.replace('{{area}}', data.area);
+		temp=temp.replace('{{location}}', data.location);
+		temp=temp.replace('{{room_type}}', data.room_type);
 		insertSellList(temp);
 		var obj = {
+			deal_type:'trading',
 			id_num: id_num,
 			latitude:data.latitude,
 			longitude:data.longitude,
 			price: data.price,
 			is_direct: data.is_direct,
 			area: data.area,
+			room_type: data.room_type
 		}
 		currentSellList.push(obj)
 	}
 	//임전세일때
-	else if (data.임전 == 임전) {
+	else if (data.deal_type == 'charter') {
 		var temp = document.querySelector('#sellListCharterTemp');
 		temp = temp.innerHTML;
-		temp.replace('{{url}}', data.url);
-		temp.replace('{{id_num', 'C_'+id_num);
-		temp.replace('{{depositPrice}}', data.deposit_price);
-		temp.replace('{{rentPrice}}', data.rent_price);
-		temp.replace('{{{{direct}}', data.is_direct);
-		temp.replace('{{area}}', data.area);
-		temp.replace('{{location}}', data.location);
+		id_num='C_'+id_num;
+		temp=temp.replace('{{url}}', data.url);
+		temp=temp.replace('{{id_num}}', id_num);
+		temp=temp.replace('{{depositPrice}}', data.deposit_price);
+		temp=temp.replace('{{rentPrice}}', data.rent_price);
+		temp=temp.replace('{{direct}}', data.is_direct);
+		temp=temp.replace('{{area}}', data.area);
+		temp=temp.replace('{{location}}', data.location);
+		temp=temp.replace('{{room_type}}',data.room_type);
 		insertSellList(temp);
 		var obj = {
+			deal_type:'charter',
 			id_num: id_num,
 			latitude:data.latitude,
 			longitude:data.longitude,
@@ -318,26 +364,41 @@ function writeSellList(data,id_num) {
 			rent_price: data.rent_price,
 			is_direct: data.is_direct,
 			area: data.area,
+			room_type: data.room_type
 		}
 		currentSellList.push(obj);
 	}
 	createMarker(data,id_num);
+
+	//var newEvtTarget=document.querySelector('#'+id_num);
+    //
+	//newEvtTarget.addEventListener('mouseenter',function(evt){
+	//	var target=evt.target;
+	//	if(target.className!='sellListDiv') return;
+	//	highlightMarker(target.id,'add');
+	//});
+	//newEvtTarget.addEventListener('mouseleave',function(evt){
+	//	var target=evt.target;
+	//	highlightMarker(target.id,'cancel');
+	//});
 }
 function createMarker(data,id_num) {
-	var markerPosition = new daum.maps.LatLng(data.latitude,data.longitude);
+	var markerPosition = new daum.maps.LatLng(data.latitude, data.longitude);
+
 	var marker = new daum.maps.Marker({
-			position: markerPosition
-		});
-		marker.id_num=id_num
-	marker.setMap(map);
-	daum.maps.event.addListener(marker, 'click', function() {
-		var id_num=marker.id_num
+		position: markerPosition,
+		map: map
+	});
+	marker.id_num = id_num;
+	daum.maps.event.addListener(marker, 'click', function () {
 		clickMarker(id_num);
 	});
 	currentMarkers.push(marker);
+	return marker;
 }
 function clickMarker(id_num){
-	document.querySelector('.selectedSellList').classList.toggle('selectedSellList');
+	var selected = document.querySelector('.selectedSellList');
+	if(selected) selected.classList.toggle('selectedSellList');
 	document.querySelector('#'+id_num).classList.toggle('selectedSellList');
 }
 function cleanMarkers(currentMarkers){
@@ -345,6 +406,11 @@ function cleanMarkers(currentMarkers){
 		currentMarkers[i].setMap(null);
 	}
 	currentMarkers=[];
+}
+function cleanList(){
+	var list=document.querySelector('.list');
+	currentSellList=[];
+	list.innerHTML='';
 }
 function insertSellList(temp) {
 	var list = document.querySelector('.list');
