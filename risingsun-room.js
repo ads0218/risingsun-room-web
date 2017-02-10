@@ -232,57 +232,67 @@ function clickFilterSubmit(target){
 	var checklist=[];
 	if(selectedFilterTab.id=='tradingTab') {
 		var minTradingPrice = Number(document.querySelector('.minTradingPrice').value);
+		if(minTradingPrice=="")minTradingPrice=0;
 		var maxTradingPrice = Number(document.querySelector('.maxTradingPrice').value);
 		if(maxTradingPrice=="")maxTradingPrice=999999999;
 		var minTradingArea = Number(document.querySelector('.minTradingArea').value);
+		if(minTradingArea=="")minTradingArea=0;
 		var maxTradingArea = Number(document.querySelector('.maxTradingArea').value);
 		if(maxTradingArea=="")maxTradingArea=999999999;
 		var checkBoxes = document.querySelectorAll('.tradingCheck');
 		for(var i=0;i<checkBoxes.length;i++){
-			if(checkBoxes[i].checked) checklist.push('checkBoxes[i].value');
+			if(checkBoxes[i].checked) checklist.push(checkBoxes[i].value);
 		}
 		var is_direct_trading = document.querySelector('.is_direct_select_trading').value;
 		for(var i=0;i<currentSellList.length;i++){
 			var subject_trading=currentSellList[i];
+			var directCheck=subject_trading.is_direct;
 			if(subject_trading.deal_type!='trading') continue;
 			if(subject_trading.price<minTradingPrice||subject_trading.price>maxTradingPrice) continue;
 			if(subject_trading.area<minTradingArea||subject_trading.area>maxTradingArea) continue;
-			if(subject_trading.is_direct==is_direct_trading) continue;
-			var index =checklist.indexOf(subject_trading.room_type)
+			if(subject_trading.is_direct!='직') directCheck='none_direct';
+			if(directCheck!=is_direct_trading) continue;
+			var index =checklist.indexOf(subject_trading.room_type);
+			if(checklist.indexOf('all')!=-1) index=1;
 			if(index==-1) continue;
 			changingSellList.push(subject_trading);
 		}
 	}
 	else if(selectedFilterTab.id=='charterTab') {
 		var minDepositPrice = Number(document.querySelector('.minDepositPrice').value);
+		if(minDepositPrice=="")minDepositPrice=0;
 		var maxDepositPrice = Number(document.querySelector('.maxDepositPrice').value);
 		if(maxDepositPrice=="")maxDepositPrice=999999999;
 		var minRentPrice = Number(document.querySelector('.minRentPrice').value);
+		if(minRentPrice=="")minRentPrice=0;
 		var maxRentPrice = Number(document.querySelector('.maxRentPrice').value);
 		if(maxRentPrice=="")maxRentPrice=999999999;
 		var minCharterArea = Number(document.querySelector('.minCharterArea').value);
+		if(minCharterArea=="")minCharterArea=0;
 		var maxCharterArea = Number(document.querySelector('.maxCharterArea').value);
 		if(maxCharterArea=="")maxCharterArea=999999999;
 		var checkBoxes = document.querySelectorAll('.charterCheck');
 		for(var i=0;i<checkBoxes.length;i++){
-			if(checkBoxes[i].checked) checklist.push('checkBoxes[i].value');
+			if(checkBoxes[i].checked) checklist.push(checkBoxes[i].value);
 		}
 		var is_direct_charter = document.querySelector('.is_direct_select_charter').value;
 		for(var i=0;i<currentSellList.length;i++){
 			var subject_charter=currentSellList[i];
+			var directCheck=subject_charter.is_direct;
 			if(subject_charter.deal_type!='charter') continue;
 			if(subject_charter.deposit_price<minDepositPrice||subject_charter.deposit_price>maxDepositPrice) continue;
 			if(subject_charter.rent_price<minRentPrice||subject_charter.rent_price>maxRentPrice) continue;
 			if(subject_charter.area<minCharterArea||subject_charter.area>maxCharterArea) continue;
-			if(subject_charter.is_direct==is_direct_charter) continue;
-			var index =checklist.indexOf(subject_charter.room_type)
+			if(subject_charter.is_direct!='직') directCheck='none_direct';
+			if(directCheck!=is_direct_charter) continue;
+			var index =checklist.indexOf(subject_charter.room_type);
+			if(checklist.indexOf('all')!=-1) index=1;
 			if(index==-1) continue;
 			changingSellList.push(subject_charter);
 		}
 	}
 	preWriteSellList(changingSellList);
 	changingSellList=[];
-	currentSellList=[];
 }
 //------------------------------------------
 function filtering(){
@@ -295,7 +305,7 @@ function parseAjax(JSON){
 }
 function preWriteSellList(data){
 	//createMarker(data);
-	cleanMarkers(currentMarkers);
+	cleanMarkers();
 	cleanList();
 	for(var i=0;i<data.length;i++) {
 		writeSellList(data[i],i);
@@ -304,7 +314,7 @@ function preWriteSellList(data){
 	for(var i=0;i<evtTargetList.length;i++){
 		evtTargetList[i].addEventListener('mouseenter',function(evt){
 			var target=evt.target;
-			if(target.className!='sellListDiv') return;
+			//if(target.className!='sellListDiv') return;
 			highlightMarker(target.id,'add');
 		});
 		evtTargetList[i].addEventListener('mouseleave',function(evt){
@@ -332,11 +342,13 @@ function writeSellList(data,id_num) {
 		var obj = {
 			deal_type:'trading',
 			id_num: id_num,
+			url:data.url,
 			latitude:data.latitude,
 			longitude:data.longitude,
 			price: data.price,
 			is_direct: data.is_direct,
 			area: data.area,
+			location:data.location,
 			room_type: data.room_type
 		}
 		currentSellList.push(obj)
@@ -358,12 +370,14 @@ function writeSellList(data,id_num) {
 		var obj = {
 			deal_type:'charter',
 			id_num: id_num,
+			url:data.url,
 			latitude:data.latitude,
 			longitude:data.longitude,
 			deposit_price: data.deposit_price,
 			rent_price: data.rent_price,
 			is_direct: data.is_direct,
 			area: data.area,
+			location:data.location,
 			room_type: data.room_type
 		}
 		currentSellList.push(obj);
@@ -401,7 +415,7 @@ function clickMarker(id_num){
 	if(selected) selected.classList.toggle('selectedSellList');
 	document.querySelector('#'+id_num).classList.toggle('selectedSellList');
 }
-function cleanMarkers(currentMarkers){
+function cleanMarkers(){
 	for(var i=0;i<currentMarkers.length;i++){
 		currentMarkers[i].setMap(null);
 	}
