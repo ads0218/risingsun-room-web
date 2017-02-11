@@ -17,7 +17,7 @@ body{
 	width:98%;
 	height:10%;
 	overflow:left;
-	padding:0px 10px;
+	padding:1% 0px 0px 10px;
 }
 #rogo{
 	float:left;
@@ -48,7 +48,7 @@ body{
 #serchBox{
 	width:500px;
 	height:40px;
-	font-size:2.5em;
+	font-size:2.4em;
 }
 #serchButton{
 	width:40px;
@@ -193,4 +193,11 @@ span{
 }
 .checkDiv{
 	overflow:left;
+	float:left;
+	padding:10px 0px;
+	width:380px;
+}
+.checkSpan{
+	margin-right:6px;
+	margin-bottom:6px;
 }
