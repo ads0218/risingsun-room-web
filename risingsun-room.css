@@ -15,9 +15,9 @@ body{
 }
 #header{
 	width:98%;
-	height:10%;
+	height:8%;
 	overflow:left;
-	padding:1% 0px 0px 10px;
+	padding:0px 0px 0px 10px;
 }
 #rogo{
 	float:left;
@@ -92,6 +92,7 @@ body{
 	list-style-type: none;
 	font-size:1.9rem;
 	margin:0;
+	padding:10px
 }
 .sellListDiv{
 	background-color:#fff;
@@ -110,7 +111,11 @@ body{
 	color:red;
 }
 .sellListArea{
-	font-size:;
+	color:#555;
+	font-weight:normal;
+}
+.sellListLocation{
+	float:left;
 }
 .filterTab{
 	width:50%;
@@ -178,7 +183,7 @@ span{
 	float:left;
 }
 .is_direct{
-	float:none;
+	float:right;
 }
 .selectedSellList{
 	background-color:#8ec84b;
@@ -188,8 +193,10 @@ span{
 }
 .room_type{
 	float:right;
-	margin-right:10px;
 	color:#000;
+	border:2px solid #bbb;
+	text-align:center;
+	padding:0px;
 }
 .checkDiv{
 	overflow:left;
