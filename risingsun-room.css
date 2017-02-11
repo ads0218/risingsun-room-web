@@ -90,18 +90,19 @@ body{
 }
 .sellListUl{
 	list-style-type: none;
-	font-size:1.9rem;
+	font-size:1.5rem;
 	margin:0;
 	padding:10px
 }
 .sellListDiv{
 	background-color:#fff;
 	color:#555;
-	width:100%;
+	width:400px;
 	height:150px;
 	margin:1px 0px;
 	border:1px solid #777;
 	box-sizing: border-box;
+	overflow:scroll;
 }
 .sellListPrice{
 	font-weight: bold;
@@ -113,6 +114,7 @@ body{
 .sellListArea{
 	color:#555;
 	font-weight:normal;
+	float:none;
 }
 .sellListLocation{
 	float:left;
@@ -179,7 +181,7 @@ button{
 p{
 	margin:0px;
 }
-span{
+.filterSpan{
 	float:left;
 }
 .is_direct{
@@ -192,10 +194,8 @@ span{
 	color:#fff;
 }
 .room_type{
-	float:right;
 	color:#000;
-	border:2px solid #bbb;
-	text-align:center;
+	font-weight:bold;
 	padding:0px;
 }
 .checkDiv{
