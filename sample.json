@@ -1,16 +1,71 @@
-{
+var sample={
 	results:[{
 				deal_type :'charter',
-				price :,
 				deposit_price : 6000,
 				rent_price : 50,
-				is_direct : 'direct',
+				is_direct : '직',
 				area : 3000,
-				location : 서산시청,
+				location : '서산시청',
 				latitude : 36.78487940520252,
 				longitude : 126.45032439280797,
-				url : 'https://www.naver.com',
-				room_type: ,
-		}
+				url : 'http://www.naver.com',
+				room_type:'원룸'
+		},{
+				deal_type :'trading',
+				price :15000,
+				is_direct : '직',
+				area : 3000,
+				location : '서산시청 위',
+				latitude : 36.78587940520252,
+				longitude : 126.45032439280797,
+				url : 'http://www.naver.com',
+				room_type:'투룸'
+		},{
+				deal_type :'charter',
+				deposit_price : 8000,
+				rent_price : 30,
+				is_direct : '직',
+				area : 3000,
+				location : '서산시청 오른쪽',
+				latitude : 36.78487940520252,
+				longitude : 126.45132439280797,
+				url : 'http://www.naver.com',
+				room_type:'원룸'
+		},{
+				deal_type :'trading',
+				price :20000,
+				is_direct : '직',
+				area : 3000,
+				location : '서산시청 왼쪽',
+				latitude : 36.78487940520252,
+				longitude : 126.44902439280797,
+				url : 'http://www.naver.com',
+				room_type:'전원주택'
+		},{
+				deal_type :'charter',
+				deposit_price : 5000,
+				rent_price : 50,
+				is_direct : '직',
+				area : 3000,
+				location : '어딘가',
+				latitude : 36.79487940520252,
+				longitude : 126.44032439280797,
+				url : 'http://www.naver.com',
+				room_type:'빌라'
+		},{
+				deal_type :'trading',
+				price :30000,
+				is_direct : '직',
+				area : 3000,
+				location : '서해',
+				latitude : 36.78487940520252,
+				longitude : 125.23032439280797,
+				url : 'http://www.naver.com',
+				room_type:'아파트'
+		},
 	]
 }
+
+var data=sample.results;
+
+preWriteSellList(data);
